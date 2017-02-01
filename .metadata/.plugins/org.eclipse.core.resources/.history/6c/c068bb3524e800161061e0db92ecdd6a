@@ -1,0 +1,46 @@
+package Login;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public interface signInInterface {
+	public void openBrowse(WebDriver driver, String url);
+	
+	public void closeBrowser();
+	public void refresh();
+	
+	
+
+}
+
+
+
+
+ @BeforeSuite
+ public void beforeSuite() {
+	  driver=new ChromeDriver();
+	  driver.manage().window().maximize();
+	  driver.get(path);
+ }
+
+ @AfterSuite
+ public void afterSuite() throws InterruptedException {
+	  Thread.sleep(5000);
+	  driver.quit();
+ 
+ }
+ 
+ 
+ 
+ 
+	
+	  
+ }
+ 
+

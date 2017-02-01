@@ -1,0 +1,72 @@
+package Login;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterSuite;
+
+public class signIn {
+	public WebDriver driver=null;
+	public String path="http://freemig.com";
+	
+  @Test(dataProvider = "dp")
+  public void signInCheck(String username, String password) throws InterruptedException {
+	  driver.findElement(By.xpath(".//*[@id='frontBody']/div[2]/div/div/div[2]/div/div/div/div[1]/div[1]/div/div[6]/a")).click();
+	  driver.findElement(By.xpath(".//*[@id='formLogin']/div[3]/div/div/input")).sendKeys(username);
+	  driver.findElement(By.xpath(".//*[@id='formLogin']/div[4]/div/div/input[1]")).sendKeys(password);
+	  driver.findElement(By.xpath(".//*[@id='formLogin']/div[7]/button")).click();
+	  
+	  Thread.sleep(2000);
+	  driver.findElement(By.xpath("html body#frontBody div#locationDeniedModal.modal.fade div.modal-dialog.modal-sm div.well-default.text-center a.btn.btn-profile")).click();
+	  Thread.sleep(2000);
+	  System.out.println(driver.getTitle());
+  }
+  @BeforeMethod
+  public void beforeMethod() {
+  }
+
+  @AfterMethod
+  public void afterMethod() {
+  }
+
+
+  @DataProvider
+  public Object[][] dp() {
+   Object [][] data=new Object[1][2];
+   data[0][0]="ish_man";
+   data[0][1]="ishnonymous1"';
+		   return data;
+  }
+  @BeforeClass
+  public void beforeClass() {
+  }
+
+  @AfterClass
+  public void afterClass() {
+  }
+
+  @BeforeTest
+  public void beforeTest() {
+  }
+
+  @AfterTest
+  public void afterTest() {
+  }
+
+  @BeforeSuite
+  public void beforeSuite() {
+  }
+
+  @AfterSuite
+  public void afterSuite() {
+  }
+
+}

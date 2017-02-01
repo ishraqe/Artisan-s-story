@@ -1,0 +1,35 @@
+package Login;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeSuite;
+
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterSuite;
+
+public class NewTest {
+ public WebDriver driver=null;
+ public String path="http://freemig.com/";
+ 
+ 
+  @BeforeSuite
+  public void beforeSuite() {
+	  driver=new ChromeDriver();
+	  driver.manage().window().maximize();
+  }
+
+  @AfterSuite
+  public void afterSuite() throws InterruptedException {
+	  Thread.sleep(5000);
+	  driver.quit();
+  
+  }
+  
+  
+  
+  @Test
+  public void signIn() {
+  }
+
+}

@@ -1,0 +1,41 @@
+package Login;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterSuite;
+
+public class NewTest {
+  @Test(dataProvider = "loginCredentials")
+  public void SignIn(String username, String password) {
+	  
+	  
+  }
+
+  @DataProvider
+  public Object[][] loginCredentials() {
+   
+    Object [][] data=new Object[4][2];
+    data[0][0]="ish_man";
+    data[0][1]="ishnonymous1";
+    
+    data[1][0]="asjfgfjsaf";
+    data[1][1]="ishnonymous1";
+    
+    data[2][0]="ish_man";
+    data[2][1]="fdjsagfs";
+    
+    data[3][0]="";
+    data[3][1]="";
+		
+    return data;
+  }
+  @BeforeSuite
+  public void beforeSuite() {
+  }
+
+  @AfterSuite
+  public void afterSuite() {
+  }
+
+}

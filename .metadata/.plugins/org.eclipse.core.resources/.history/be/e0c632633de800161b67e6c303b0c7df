@@ -1,0 +1,26 @@
+package Login;
+
+import java.util.Properties;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class fogetpass {
+	static WebDriver driver=null;
+	static WebDriverWait wait=null;
+	public  Properties properties=new Properties();
+	private static String fpass() {
+		 wait = new WebDriverWait(driver, 10);
+		   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='frontBody']/div[2]/div/div/div[2]/div/div/div/div[1]/div[1]/div/div[6]/a")));
+		  
+			driver.findElement(By.xpath(".//*[@id='frontBody']/div[2]/div/div/div[2]/div/div/div/div[1]/div[1]/div/div[6]/a")).click();
+			driver.findElement(By.xpath(".//*[@id='formLogin']/div[10]/a")).click();
+			Thread.sleep(2000);
+			driver.findElement(By.xpath(".//*[@id='formReset']/div[4]/div/div/input")).sendKeys(properties.getProperty("forgotEmail"));
+			driver.findElement(By.xpath(".//*[@id='formReset']/div[5]/button")).click();
+			Thread.sleep(2000);
+			 return driver.findElement(By.xpath(".//*[@id='resetModal']/div/div/h5")).getText(); 
+	}
+}

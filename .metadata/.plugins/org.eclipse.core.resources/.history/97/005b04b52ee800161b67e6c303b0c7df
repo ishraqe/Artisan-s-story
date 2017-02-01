@@ -1,0 +1,42 @@
+package Login;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.DataProvider;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterSuite;
+
+public class signIn {
+	public WebDriver driver=null;
+	public String path="http://freemig.com";
+	
+  @Test(dataProvider = "valid")
+  public void signInCheckvalid(String username, String password) throws InterruptedException {
+	 
+	  
+	  System.out.println(driver.getTitle());
+  }
+ 
+  @DataProvider
+  public Object[][] valid() {
+   Object [][] data=new Object[1][2];
+   data[0][0]="ish_man";
+   data[0][1]="ishnonymous1";
+	return data;
+  }
+  
+
+  @BeforeSuite
+  public void beforeSuite() {
+	  driver=new ChromeDriver();
+	  driver.get(path);
+  }
+
+  @AfterSuite
+  public void afterSuite() {
+	  driver.close();
+  }
+
+}

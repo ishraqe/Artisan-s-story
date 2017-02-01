@@ -1,0 +1,59 @@
+package Login;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.BeforeSuite;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterSuite;
+
+public class NewTest {
+  public WebDriver driver;
+  public String path="http://freemig.com";
+	
+	
+	@Test(dataProvider = "loginCredentials")
+  public void SignIn(String username, String password) throws InterruptedException {
+	  
+	  driver.findElement(By.xpath(".//*[@id='frontBody']/div[2]/div/div/div[2]/div/div/div/div[1]/div[1]/div/div[6]/a")).click();
+	  driver.findElement(By.xpath(".//*[@id='formLogin']/div[3]/div/div/input")).sendKeys("username");
+	  driver.findElement(By.xpath(".//*[@id='formLogin']/div[4]/div/div/input[1]")).sendKeys(password);
+	  driver.findElement(By.xpath(".//*[@id='formLogin']/div[7]/button")).click();
+	  
+	  Thread.sleep(2000);
+	  driver.findElement(By.xpath("")).click();
+  }
+
+  @DataProvider
+  public Object[][] loginCredentials() {
+   
+    Object [][] data=new Object[4][2];
+    data[0][0]="ish_man";
+    data[0][1]="ishnonymous1";
+    
+    data[1][0]="asjfgfjsaf";
+    data[1][1]="ishnonymous1";
+    
+    data[2][0]="ish_man";
+    data[2][1]="fdjsagfs";
+    
+    data[3][0]="";
+    data[3][1]="";
+		
+    return data;
+  }
+  @BeforeSuite
+  public void beforeSuite() {
+	 WebDriver driver=new ChromeDriver();
+	 driver.get(path);
+	 driver.manage().window().maximize();
+  }
+
+  @AfterSuite
+  public void afterSuite() throws InterruptedException {
+	  Thread.sleep(3000);
+	  driver.close();
+  }
+
+}

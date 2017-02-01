@@ -1,0 +1,54 @@
+package Login;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterSuite;
+
+public class NewTest {
+ public WebDriver driver=null;
+ public String path="http://freemig.com/";
+ 
+ 
+  @BeforeSuite
+  public void beforeSuite() {
+	  driver=new ChromeDriver();
+	  driver.manage().window().maximize();
+	  driver.get(path);
+  }
+
+  @AfterSuite
+  public void afterSuite() throws InterruptedException {
+	  Thread.sleep(5000);
+	  driver.quit();
+  
+  }
+  
+  
+  
+  @Test(dataProvider="loginCredentials")
+  public void signIn(String username, String password) throws InterruptedException {
+	  driver.findElement(By.xpath(".//*[@id='frontBody']/div[2]/div/div/div[2]/div/div/div/div[1]/div[1]/div/div[6]/a")).click();
+	  
+	  Thread.sleep(3000);
+	  driver.findElement(By.xpath(".//*[@id='formLogin']/div[3]/div/div/input")).sendKeys(username);
+	  Thread.sleep(1000);
+	  driver.findElement(By.xpath(".//*[@id='formLogin']/div[4]/div/div/input[1]")).sendKeys(password);
+	  Thread.sleep(1000);
+	  driver.findElement(By.xpath(".//*[@id='formLogin']/div[7]/button")).click();
+	  
+	  
+  }
+  
+@DataProvider
+public Object [][] loginCredentials(){
+	Object[][] data=new Object[1][2];
+	data[0][0]="ish_man";
+	data[0][1]="ishraqenonymous1";
+	return data;
+}
+
+}

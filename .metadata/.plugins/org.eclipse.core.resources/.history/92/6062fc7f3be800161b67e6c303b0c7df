@@ -1,0 +1,92 @@
+package Login;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.DataProvider;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterSuite;
+
+public class signIn {
+	public WebDriver driver=null;
+	public String path="http://freemig.com";
+	public  Properties properties=new Properties();
+	public FileInputStream fStream=null;
+	
+	public WebDriverWait wait=null;
+	
+	
+  @Test(dataProvider = "valid")
+  public void signInCheckvalid(String username, String password) throws InterruptedException {
+	  
+		 dependency(username, password);
+		 System.out.println(driver.getTitle());
+  }
+ 
+  @DataProvider
+  public Object[][] valid() throws IOException {
+	   Object [][] data=new Object[1][2];
+	 
+	   fStream=new FileInputStream("C:\\Users\\MSS-IT-DST-12\\workspace\\Freemig\\src\\Login\\data.properties");
+	   properties.load(fStream);
+	   
+	   data[0][0]=properties.getProperty("username");
+	   data[0][1]=properties.getProperty("password");
+	   
+		return data;
+  }
+  
+
+  @BeforeSuite
+  public void beforeSuite() {
+		  driver=new ChromeDriver();
+		  driver.get(path);
+  }
+
+  @AfterSuite
+  public void afterSuite() {
+	  	driver.close();
+  }
+  public void  dependency(String username, String password) throws InterruptedException {
+	  
+		  driver.findElement(By.xpath(".//*[@id='frontBody']/div[2]/div/div/div[2]/div/div/div/div[1]/div[1]/div/div[6]/a")).click();
+		  driver.findElement(By.xpath(".//*[@id='formLogin']/div[3]/div/div/input")).sendKeys(username);
+		  driver.findElement(By.xpath(".//*[@id='formLogin']/div[4]/div/div/input[1]")).sendKeys(password);
+		  driver.findElement(By.xpath(".//*[@id='formLogin']/div[7]/button")).click();
+		  
+		  Thread.sleep(2000);
+		  driver.findElement(By.xpath("//a[@class='btn btn-profile' and contains(text(), 'Continue')]")).click();
+		  Thread.sleep(2000);
+		  String expected="Freemig - Home";
+	 
+		if (expected==driver.getTitle()) {
+			System.out.println("sign in complete");
+	  	}else{
+			  System.out.println("wrong password");
+			  driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+			  driver.navigate().to(path);
+			  forgetPass();
+	  	}
+  }
+  
+  public void forgetPass() throws InterruptedException{
+	  	Thread.sleep(3000);
+		driver.findElement(By.xpath(".//*[@id='frontBody']/div[2]/div/div/div[2]/div/div/div/div[1]/div[1]/div/div[6]/a")).click();
+		driver.findElement(By.xpath(".//*[@id='formLogin']/div[10]/a")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(".//*[@id='formReset']/div[4]/div/div/input")).sendKeys(properties.getProperty("forgotEmail"));
+		driver.findElement(By.xpath(".//*[@id='formReset']/div[5]/button")).click();
+		Thread.sleep(2000);
+		System.out.println(driver.findElement(By.xpath(".//*[@id='resetModal']/div/div/h5")).getText()); 
+	 
+	 
+  }
+}

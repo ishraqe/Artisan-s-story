@@ -1,0 +1,21 @@
+package Login;
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+
+public class forgetpass {
+	public WebDriver driver=null;
+	public String path="http://freemig.com";
+	public  Properties properties=new Properties();
+	public FileInputStream fStream=null;
+	
+	
+	void forgotpass() throws InterruptedException{
+		  
+			
+	}
+}

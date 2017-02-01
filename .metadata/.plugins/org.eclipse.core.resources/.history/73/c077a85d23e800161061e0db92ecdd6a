@@ -1,0 +1,12 @@
+package Login;
+
+
+
+public interface signInInterface {
+	public void openBrowse();
+	
+	public void closeBrowser();
+	public void refresh();
+	public String redirectTo(String url);
+	
+}

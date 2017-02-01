@@ -1,0 +1,17 @@
+package Login;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class forgetpass {
+	void foooo(){
+		  
+			driver.findElement(By.xpath(".//*[@id='formLogin']/div[10]/a")).click();
+			Thread.sleep(2000);
+			driver.findElement(By.xpath(".//*[@id='formReset']/div[4]/div/div/input")).sendKeys(properties.getProperty("forgotEmail"));
+			driver.findElement(By.xpath(".//*[@id='formReset']/div[5]/button")).click();
+			Thread.sleep(2000);
+			System.out.println(driver.findElement(By.xpath(".//*[@id='resetModal']/div/div/h5")).getText()); 
+	}
+}

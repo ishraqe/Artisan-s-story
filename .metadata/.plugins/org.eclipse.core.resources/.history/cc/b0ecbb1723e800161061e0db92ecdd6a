@@ -1,0 +1,11 @@
+package Login;
+
+
+
+public interface signInInterface {
+	public void openBrowse();
+	
+	public void closeBrowser();
+	public void closeBrowser();
+	
+}

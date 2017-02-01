@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Login" duration-ms="12151" started-at="2017-02-01T06:18:13Z" finished-at="2017-02-01T06:18:25Z">
+    <groups>
+    </groups>
+    <test name="SignIn" duration-ms="12151" started-at="2017-02-01T06:18:13Z" finished-at="2017-02-01T06:18:25Z">
+      <class name="Login.signIn">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:Login.signIn@47c62251]" name="beforeSuite" is-config="true" duration-ms="6633" started-at="2017-01-31T22:18:07Z" finished-at="2017-01-31T22:18:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="signInCheckvalid(java.lang.String, java.lang.String)[pri:0, instance:Login.signIn@47c62251]" name="signInCheckvalid" duration-ms="12130" started-at="2017-01-31T22:18:13Z" data-provider="valid" finished-at="2017-01-31T22:18:25Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ish_man]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[ishnonymougs1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- signInCheckvalid -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:Login.signIn@47c62251]" name="afterSuite" is-config="true" duration-ms="2310" started-at="2017-01-31T22:18:26Z" finished-at="2017-01-31T22:18:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- Login.signIn -->
+    </test> <!-- SignIn -->
+  </suite> <!-- Login -->
+</testng-results>

@@ -1,0 +1,13 @@
+package Login;
+
+import org.openqa.selenium.WebDriver;
+
+public interface signInInterface {
+	public String openBrowse(WebDriver driver, String url);
+	
+	public void closeBrowser();
+	public void refresh();
+	public String redirectTo(String url);
+	
+	
+}

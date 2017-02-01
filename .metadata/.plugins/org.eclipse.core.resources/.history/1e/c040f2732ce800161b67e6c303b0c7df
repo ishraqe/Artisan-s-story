@@ -1,0 +1,46 @@
+package Login;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.BeforeSuite;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterSuite;
+
+public class signIn {
+  public WebDriver driver;
+  public String path="http://freemig.com";
+	
+  
+  @BeforeSuite
+  public void openBrowser() {
+	 WebDriver driver=new ChromeDriver();
+	 driver.manage().window().maximize();
+	 driver.get(path);
+  }
+
+  @AfterSuite
+  public void closeBrowser() throws InterruptedException {
+	  Thread.sleep(3000);
+	  driver.close();
+  }
+	
+@Test(dataProvider="loginCredentials")
+public void SignIn(String username,String password) throws InterruptedException {
+	  Thread.sleep(2000);
+	 
+}
+
+@DataProvider
+public Object[][] loginCredentials() {
+ 
+  Object [][] data=new Object[1][2];
+  data[0][0]="ish_man";
+  data[0][1]="ishnonymous1";
+  	
+  return data;
+} 
+ 
+
+}

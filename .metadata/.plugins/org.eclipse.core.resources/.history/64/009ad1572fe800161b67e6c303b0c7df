@@ -1,0 +1,54 @@
+package Login;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.DataProvider;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterSuite;
+
+public class signIn {
+	public WebDriver driver=null;
+	public String path="http://freemig.com";
+	
+  @Test(dataProvider = "valid")
+  public void signInCheckvalid(String username, String password) throws InterruptedException {
+	 dependency(username, password);
+	 System.out.println(driver.getTitle());
+  }
+ 
+  @DataProvider
+  public Object[][] valid() {
+   Object [][] data=new Object[2][2];
+   data[0][0]="ish_man";
+   data[0][1]="ishnonymous1";
+   
+  
+	return data;
+  }
+  
+
+  @BeforeSuite
+  public void beforeSuite() {
+	  driver=new ChromeDriver();
+	  driver.get(path);
+  }
+
+  @AfterSuite
+  public void afterSuite() {
+	  driver.close();
+  }
+  public void  dependency(String username, String password) throws InterruptedException {
+	  
+	  driver.findElement(By.xpath(".//*[@id='frontBody']/div[2]/div/div/div[2]/div/div/div/div[1]/div[1]/div/div[6]/a")).click();
+	  driver.findElement(By.xpath(".//*[@id='formLogin']/div[3]/div/div/input")).sendKeys(username);
+	  driver.findElement(By.xpath(".//*[@id='formLogin']/div[4]/div/div/input[1]")).sendKeys(password);
+	  driver.findElement(By.xpath(".//*[@id='formLogin']/div[7]/button")).click();
+	  
+	  Thread.sleep(2000);
+	  driver.findElement(By.xpath("//a[@class='btn btn-profile' and contains(text(), 'Continue')]")).click();
+	  Thread.sleep(2000);
+	
+}
+}

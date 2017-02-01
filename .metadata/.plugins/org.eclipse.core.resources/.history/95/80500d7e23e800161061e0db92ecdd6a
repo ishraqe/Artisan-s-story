@@ -1,0 +1,39 @@
+package Login;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+
+public class SignIn implements signInInterface {
+
+	@Override
+	public void openBrowse(WebDriver driver, String url) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void closeBrowser() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String redirectTo(String url) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+ 
+
+}
